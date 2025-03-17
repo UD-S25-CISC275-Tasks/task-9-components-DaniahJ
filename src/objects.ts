@@ -8,9 +8,24 @@ import { Question, QuestionType } from "./interfaces/question";
 export function makeBlankQuestion(
     id: number,
     name: string,
+<<<<<<< HEAD
     type: QuestionType
 ): Question {
     return {};
+=======
+    type: QuestionType,
+): Question {
+    return {
+        id: id,
+        name: name,
+        type: type,
+        body: "",
+        expected: "",
+        options: [],
+        points: 1,
+        published: false,
+    };
+>>>>>>> 85d86e6 (Fixed module import issue in objects.ts)
 }
 
 /**
@@ -21,7 +36,13 @@ export function makeBlankQuestion(
  * HINT: Look up the `trim` and `toLowerCase` functions.
  */
 export function isCorrect(question: Question, answer: string): boolean {
+<<<<<<< HEAD
     return false;
+=======
+    const givenAnswer = answer.trim().toLowerCase();
+    const expected = question.expected.trim().toLowerCase();
+    return givenAnswer === expected;
+>>>>>>> 85d86e6 (Fixed module import issue in objects.ts)
 }
 
 /**
@@ -31,7 +52,15 @@ export function isCorrect(question: Question, answer: string): boolean {
  * be exactly one of the options.
  */
 export function isValid(question: Question, answer: string): boolean {
+<<<<<<< HEAD
     return false;
+=======
+    if (question.type === "short_answer_question") {
+        return true;
+    } else {
+        return question.options.includes(answer);
+    }
+>>>>>>> 85d86e6 (Fixed module import issue in objects.ts)
 }
 
 /**
@@ -41,7 +70,11 @@ export function isValid(question: Question, answer: string): boolean {
  * name "My First Question" would become "9: My First Q".
  */
 export function toShortForm(question: Question): string {
+<<<<<<< HEAD
     return "";
+=======
+    return `${question.id}: ${question.name.substring(0, 10)}`;
+>>>>>>> 85d86e6 (Fixed module import issue in objects.ts)
 }
 
 /**
@@ -62,7 +95,17 @@ export function toShortForm(question: Question): string {
  * Check the unit tests for more examples of what this looks like!
  */
 export function toMarkdown(question: Question): string {
+<<<<<<< HEAD
     return "";
+=======
+    const line1and2 = `# ${question.name}\n${question.body}`;
+    const options =
+        question.type === "multiple_choice_question" ?
+            question.options.map((option) => `- ${option}`).join(`\n`)
+        :   "";
+
+    return options ? `${line1and2}\n${options}` : line1and2;
+>>>>>>> 85d86e6 (Fixed module import issue in objects.ts)
 }
 
 /**
@@ -70,7 +113,11 @@ export function toMarkdown(question: Question): string {
  * `newName`.
  */
 export function renameQuestion(question: Question, newName: string): Question {
+<<<<<<< HEAD
     return question;
+=======
+    return { ...question, name: newName };
+>>>>>>> 85d86e6 (Fixed module import issue in objects.ts)
 }
 
 /**
@@ -79,7 +126,11 @@ export function renameQuestion(question: Question, newName: string): Question {
  * published; if it was published, now it should be not published.
  */
 export function publishQuestion(question: Question): Question {
+<<<<<<< HEAD
     return question;
+=======
+    return { ...question, published: !question.published };
+>>>>>>> 85d86e6 (Fixed module import issue in objects.ts)
 }
 
 /**
@@ -89,7 +140,20 @@ export function publishQuestion(question: Question): Question {
  * The `published` field should be reset to false.
  */
 export function duplicateQuestion(id: number, oldQuestion: Question): Question {
+<<<<<<< HEAD
     return oldQuestion;
+=======
+    return {
+        id,
+        name: `Copy of ${oldQuestion.name}`,
+        body: oldQuestion.body,
+        type: oldQuestion.type,
+        options: oldQuestion.options,
+        expected: oldQuestion.expected,
+        points: oldQuestion.points,
+        published: false,
+    };
+>>>>>>> 85d86e6 (Fixed module import issue in objects.ts)
 }
 
 /**
@@ -100,7 +164,20 @@ export function duplicateQuestion(id: number, oldQuestion: Question): Question {
  * Check out the subsection about "Nested Fields" for more information.
  */
 export function addOption(question: Question, newOption: string): Question {
+<<<<<<< HEAD
     return question;
+=======
+    return {
+        id: question.id,
+        name: question.name,
+        body: question.body,
+        type: question.type,
+        options: [...question.options, newOption],
+        expected: question.expected,
+        points: question.points,
+        published: question.published,
+    };
+>>>>>>> 85d86e6 (Fixed module import issue in objects.ts)
 }
 
 /**
@@ -115,7 +192,22 @@ export function mergeQuestion(
     id: number,
     name: string,
     contentQuestion: Question,
+<<<<<<< HEAD
     { points }: { points: number }
 ): Question {
     return contentQuestion;
+=======
+    { points }: { points: number },
+): Question {
+    return {
+        id,
+        name,
+        body: contentQuestion.body,
+        type: contentQuestion.type,
+        options: contentQuestion.options,
+        expected: contentQuestion.expected,
+        points: points,
+        published: false,
+    };
+>>>>>>> 85d86e6 (Fixed module import issue in objects.ts)
 }
