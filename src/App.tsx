@@ -14,7 +14,6 @@ import { Button } from "react-bootstrap";
 import Cupcake from "./cupcakeIMG.jpg";
 
 function App(): React.JSX.Element {
-    3;
     return (
         <div className="App">
             <header className="App-header">
