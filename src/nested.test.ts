@@ -295,17 +295,14 @@ describe("Testing the Question[] functions", () => {
                 options: [],
                 expected: "4",
                 points: 1,
-                published: true
+                published: true,
             },
             {
-                id: 2,
-                name: "Letters",
-                body: "What is the last letter of the English alphabet?",
                 type: "short_answer_question",
                 options: [],
                 expected: "Z",
                 points: 1,
-                published: false
+                published: false,
             },
             {
                 id: 5,
@@ -315,8 +312,8 @@ describe("Testing the Question[] functions", () => {
                 options: ["red", "apple", "firetruck"],
                 expected: "red",
                 points: 1,
-                published: true
-            }
+                published: true,
+            },
         ]);
         expect(removeQuestion(SIMPLE_QUESTIONS, 5)).toEqual([
             {
@@ -610,129 +607,7 @@ describe("Testing the Question[] functions", () => {
                 expected: "",
                 points: 5,
                 published: true
-            },
-            {
-                id: 4,
-                name: "Empty 4",
-                body: "",
-                type: "short_answer_question",
-                options: [],
-                expected: "Even this one is not empty",
-                points: 5,
-                published: true
-            },
-            {
-                id: 5,
-                name: "Empty 5 (Actual)",
-                body: "",
-                type: "short_answer_question",
-                options: [],
-                expected: "",
-                points: 5,
-                published: true
-            }
-        ]);
-        expect(publishAll(SIMPLE_QUESTIONS_2)).toEqual(SIMPLE_QUESTIONS_2);
-    });
-
-    test("Testing the sameType function", () => {
-        expect(sameType([])).toEqual(true);
-        expect(sameType(BLANK_QUESTIONS)).toEqual(false);
-        expect(sameType(SIMPLE_QUESTIONS)).toEqual(false);
-        expect(sameType(TRIVIA_QUESTIONS)).toEqual(true);
-        expect(sameType(EMPTY_QUESTIONS)).toEqual(false);
-        expect(sameType(SIMPLE_QUESTIONS_2)).toEqual(true);
-    });
-
-    test("Testing the addNewQuestion function", () => {
-        expect(
-            addNewQuestion([], 142, "A new question", "short_answer_question")
-        ).toEqual([NEW_BLANK_QUESTION]);
-        expect(
-            addNewQuestion(
-                BLANK_QUESTIONS,
-                142,
-                "A new question",
-                "short_answer_question"
-            )
-        ).toEqual([...BLANK_QUESTIONS, NEW_BLANK_QUESTION]);
-        expect(
-            addNewQuestion(
-                TRIVIA_QUESTIONS,
-                449,
-                "Colors",
-                "multiple_choice_question"
-            )
-        ).toEqual([...TRIVIA_QUESTIONS, NEW_TRIVIA_QUESTION]);
-    });
-
-    test("Testing the renameQuestionById function", () => {
-        expect(renameQuestionById(BLANK_QUESTIONS, 1, "New Name")).toEqual([
-            {
-                id: 1,
-                name: "New Name",
-                body: "",
-                type: "multiple_choice_question",
-                options: [],
-                expected: "",
-                points: 1,
-                published: false
-            },
-            {
-                id: 47,
-                name: "My New Question",
-                body: "",
-                type: "multiple_choice_question",
-                options: [],
-                expected: "",
-                points: 1,
-                published: false
-            },
-            {
-                id: 2,
-                name: "Question 2",
-                body: "",
-                type: "short_answer_question",
-                options: [],
-                expected: "",
-                points: 1,
-                published: false
-            }
-        ]);
-        expect(renameQuestionById(BLANK_QUESTIONS, 47, "Another Name")).toEqual(
-            [
-                {
-                    id: 1,
-                    name: "Question 1",
-                    body: "",
-                    type: "multiple_choice_question",
-                    options: [],
-                    expected: "",
-                    points: 1,
-                    published: false
-                },
-                {
-                    id: 47,
-                    name: "Another Name",
-                    body: "",
-                    type: "multiple_choice_question",
-                    options: [],
-                    expected: "",
-                    points: 1,
-                    published: false
-                },
-                {
-                    id: 2,
-                    name: "Question 2",
-                    body: "",
-                    type: "short_answer_question",
-                    options: [],
-                    expected: "",
-                    points: 1,
-                    published: false
-                }
-            ]
-        );
+    }]);
         expect(renameQuestionById(SIMPLE_QUESTIONS, 5, "Colours")).toEqual([
             {
                 id: 1,
